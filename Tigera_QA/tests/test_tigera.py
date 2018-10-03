@@ -8,6 +8,9 @@
 # standard library
 import os
 
+def setup_module(module):
+    assert os.path.exists("test.log") == True
+
 def test_status():
     """
      This function will return and assert status count
@@ -18,11 +21,11 @@ def test_status():
         with open("test.log",'r') as log_file:
             for line in log_file:
                 if "INFO :" in line:
-                    status[type]  += 1
+                    status["INFO"]  += 1
                 elif "WARNING :" in line:
-                    status[type] += 1
+                    status["WARNING"] += 1
                 elif "ERROR :" in line:
-                    status[type] += 1
+                    status["ERROR"] += 1
 
     except FileNotFoundError as e:
         raise FileNotFoundError("File Not present with the given name")
@@ -30,6 +33,4 @@ def test_status():
     assert status["INFO"] == 50
     assert status["WARNING"] == 11
     assert status["ERROR"] == 3
-	print (status)
-
-
+    print (status)
