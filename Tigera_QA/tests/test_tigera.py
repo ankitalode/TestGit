@@ -1,7 +1,7 @@
 """
     File name: tigera_test.py
     Author: Ankita Lode
-    Date created: 10/01/2018
+    Date created: 10/03/2018
     Python Version: 3.6
 """
 
@@ -14,7 +14,6 @@ def test_status():
      :return: status count
      """
     status = {'INFO': 0, "WARNING": 0, "ERROR": 0}
-    #assert os.path.exists("test.log") != True
     try:
         with open("test.log",'r') as log_file:
             for line in log_file:
@@ -25,15 +24,12 @@ def test_status():
                 elif "ERROR :" in line:
                     status[type] += 1
 
-    except NameError as e:
-        raise NameError("File Not present with the given name")
+    except FileNotFoundError as e:
+        raise FileNotFoundError("File Not present with the given name")
 
     assert status["INFO"] == 50
     assert status["WARNING"] == 11
     assert status["ERROR"] == 3
+	print (status)
 
-
-
-if __name__ == '__main__':
-    test_status()
 
