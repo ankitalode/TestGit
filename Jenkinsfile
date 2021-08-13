@@ -2,19 +2,19 @@ pipeline{
     agent any
 stages{
     stage('validation'){
-        step{
-	    sh 'python3 --version'
+        steps{
+	   sh 'python3 --version'
 	}
     }
     stage('execute'){
         steps{
-	sh 'ls -ltr'
-	sh 'python3 test.py'   
+	   sh 'ls -ltr'
+	   sh 'python3 test.py'   
 	}
     }
     stage('post action'){
-       steps{
-          sh 'echo job completed'
+        steps{
+           sh 'echo job completed'
        }
     }
 }
