@@ -1,5 +1,5 @@
 pipeline {
-  agent { docker { image 'mvn_3.8:latest' } }
+  agent { docker { image 'maven:3.8.1-adoptopenjdk-11' } }
   stages {
     stage('log version info') {
        steps {
